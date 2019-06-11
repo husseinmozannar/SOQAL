@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function hit(passage, question) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/answer', true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.onreadystatechange = function () {
+                console.log(xhr.status);
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var json = JSON.parse(xhr.responseText);
+                    console.log(json.answer);
+                    var ans = document.getElementById("answer");
+                    ans.value = json.answer;
+                }
+            };
+            var params = JSON.stringify({ "question": question, "passage": passage });
+            xhr.send(params);
+            console.log("sent");
+        }
+    </script>
+    <style>
+        .main {
+            text-align: center;
+        }
+        textarea {
+            border: none;
+            padding: 10px;
+            margin: 10px;
+            height: 100px;
+            width: 500px;
+            border: 1px solid #eaeaea;
+            border-radius: 25px;
+            outline: none;
+        }
+
+        textarea:hover {
+            border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+        }
+
+        textarea:focus {
+            border-color: #4d90fe;
+        }
+        input {
+            border: none;
+            padding: 10px;
+            margin: 10px;
+            height: 20px;
+            width: 500px;
+            border: 1px solid #eaeaea;
+            border-radius: 25px;
+            outline: none;
+        }
+
+        input:hover {
+            border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+        }
+
+        input:focus {
+            border-color: #4d90fe;
+        }
+
+        input[type="submit"] {
+            border-radius: 2px;
+            background: #f2f2f2;
+            border: 1px solid #f2f2f2;
+            border-radius: 25px;
+            text-align: center;
+            color: #757575;
+            cursor: default;
+            font-size: 14px;
+            font-weight: bold;
+            width: 100px;
+            padding: 0 16px;
+            height: 36px;
+        }
+
+        input[type="submit"]:hover {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            background: #f8f8f8;
+            border: 1px solid #c6c6c6;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            color: #222;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>BERT Arabic Reading Comprehension</h1>
+    </div>
+    <div class="main">
+        <input type="text" id='question' placeholder='Your Question here' />
+    </div>
+    <div class="main">
+        <textarea id='passage' placeholder='Your Passage here'></textarea>
+    </div>
+    <div class="main">
+        <input type="text" readonly="readonly" id='answer' placeholder='Answer appears here' />
+    </div>
+    <div class="main">
+        <input type="submit" id='GetAnswer' value="Go" />
+    </div>
+    <script>
+        var button = document.getElementById("GetAnswer");
+        button.onclick = function () {
+            var para = document.getElementById("passage");
+            var ques = document.getElementById("question");
+            var ans = document.getElementById("answer");
+            ans.readonly = false;
+            ans.value = "";
+            ans.readonly = true;
+            console.log("hitting");
+            hit(para.value, ques.value);
+        };
+    </script>
+</body>
+</html>

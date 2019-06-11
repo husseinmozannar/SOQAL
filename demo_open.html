@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8">
+    <script>
+        function hit(question) {
+            
+            // document.getElementById("spinner").setAttribute('style', 'display: none;');
+            // for (var i = 0; i < 5; i++) {
+            //             var ans = document.getElementById("answer" + i);
+            //             ans.innerText = "الجواب ال" + i;
+            //             //ans.setAttribute('style', 'display: block; opacity: 1;');
+            // }
+            // document.getElementById("answersDiv").setAttribute('style', 'display: block; opacity: 1;');
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/answer', true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.onreadystatechange = function () {
+                console.log(xhr.status);
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var json = JSON.parse(xhr.responseText);
+                    console.log(json.answer);
+                    document.getElementById("spinner").setAttribute('style', 'display: none;');
+                    for (var i = 0; i < 5; i++) {
+                        var ans = document.getElementById("answer" + i);
+                        //ans.innerText += (i == json.answer.length) ? json.answer[i] : json.answer[i] + "\n";
+                        ans.innerText = json.answer[i];
+                        //ans.setAttribute('style', 'display: block; opacity: 1;');
+                    }
+                    document.getElementById("answersDiv").setAttribute('style', 'display: block; opacity: 1;');
+                }
+            };
+            var params = JSON.stringify({ "question": question });
+            xhr.send(params);
+            console.log("sent");
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/demo_open.css" >
+    <link href="https://fonts.googleapis.com/css?family=Raleway:900&display=swap" rel="stylesheet" >
+    <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div style="height:233px;margin-top:160px" id="lga">
+        <div class="main">
+            <h1>SOQAL </h1>
+        </div>
+
+        <div class="example" style="margin:auto; width: 582px;">
+            <input type="text" class="y" id="question" placeholder="ابحث ..." name="search">
+            <button id="GetAnswer" type="submit"><i class="fa fa-search"></i></button>
+        </div>
+
+        <div class="answers">
+            <div class="spinner" id="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div id="answersDiv">
+                    <table id="answersTable">
+                            <tr>
+                                <td><div class="numberCircle">١</div></td>
+                                <td><h2 class="answertext" id="answer0">الجواب</h2></td>
+                            </tr>
+                            <tr>
+                                <td><div class="numberCircle">٢</div></td>
+                                <td><h2 class="answertext" id="answer1">الجواب</h2></td>
+                            </tr>
+                            <tr>
+                                    <td><div class="numberCircle">٣</div></td>
+                                    <td><h2 class="answertext" id="answer2">الجواب</h2></td>
+                            </tr>
+                            <tr>
+                                    <td><div class="numberCircle">٤</div></td>
+                                    <td><h2 class="answertext" id="answer3">الجواب</h2></td>
+                            </tr>
+                            <tr>
+                                    <td><div class="numberCircle">٥</div></td>
+                                    <td><h2 class="answertext" id="answer4">الجواب</h2></td>
+                            </tr>
+                    </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var button = document.getElementById("GetAnswer");
+        button.onclick = function () {
+            var ques = document.getElementById("question");
+            var ans = document.getElementById("answer");
+            console.log("hitting");
+            document.getElementById("answersDiv").setAttribute('style', 'display: none; opacity: 0;');
+            document.getElementById("spinner").setAttribute('style', 'display: block;');
+            hit(ques.value);
+        };
+    </script>
+
+    <!-- YAMLI CODE START -->
+    <script type="text/javascript" src="https://api.yamli.com/js/yamli_api.js"></script>
+    <script type="text/javascript">
+        if (typeof (Yamli) == "object" && Yamli.init({ uiLanguage: "en", startMode: "onOrUserDefault" })) {
+            Yamli.yamlifyClass("y", { settingsPlacement: "inside" });
+        }
+    </script>
+    <!-- YAMLI CODE END -->
+    
+</body>
+
+</html>

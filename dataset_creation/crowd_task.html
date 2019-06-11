@@ -1,0 +1,501 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<html dir="rtl" lang="ar">
+<meta charset="utf-8"/>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+
+<crowd-form answer-format="flatten-objects">
+      <div onmousedown='return false;' onselectstart='return false;'>
+      <bdo dir="ltr"><crowd-instructions link-text="عرض التعليمات" link-type="button">
+
+          <short-summary>
+                 <div style="text-align: right;"> <h3> إطرح اسئلة على النص</h3></div>
+          </short-summary>
+          <h3>وقت العمل المقدر: 40-50 دقيقة إجمالي و-7-10 دقيقة لكل مقالة </h3>
+          <detailed-instructions>
+            <h2> تعليمات:</h2>
+            <ul>
+              <li><h3>يتواجد على الصفحة ثلاثة نصوص تتناول موضوع واحد، الرجاء كتابة و إجابة ثلاثة اسئلة موضوعية على كل نص </h3></li>
+              <li><h3>يجب أن يكون جواب الأسئلة موجود بذاته في النص</h3></li>
+              <li><h3>جواب السؤال يجب أن يكون copy-pasted من النص</h3></li>
+              <li><h3> يفضل أن تستعمل كلماتك الخاصة لطرح الأسئلةو عدم النقل من النص، الأسئلةالصعبة مفضلة </h3></li>
+              <li><h3>يفضل أن يكون السؤال يمكن الاجابة عليه بدون سياق النص   </h3></li>
+            </ul>
+
+            <h2> ملاحظات: </h2>
+            <ul>
+                <li><h3> النصوص مأخوذة من ويكيبيديا </h3></li>
+                <li><h3> يمكنم إستعمل YAMLI للكتابة </h3></li>
+                <li><h3>تحذير: بعض النصوص قد تتناول مواضيع إباحية، يمكنك الدخول إلى الصفحة مجدداً للحصول على نص جديد </h3></li>
+            </ul>
+          </detailed-instructions>
+
+      </crowd-instructions></bdo>
+
+      <h1>إطرح اسئلة على نص </h1>
+
+      <h2>The purpose of this data collection is for testing and training of machine learning models for automatic Arabic
+          Question Answering.
+           </h2>
+
+      <h2> تعليمات:</h2>
+      <ul>
+        <li><h3>يتواجد على الصفحة ثلاثة نصوص تتناول موضوع واحد، الرجاء كتابة و إجابة ثلاثة اسئلة موضوعية على كل نص </h3></li>
+        <li><h3>يجب أن يكون جواب الأسئلة موجود بذاته في النص</h3></li>
+        <li><h3>جواب السؤال يجب أن يكون copy-pasted من النص</h3></li>
+       <li><h3>يرجى القراءة والالتزام: اكتب في المربع الأول السؤال باستخدام لوحة المفاتيح ، ولا يمكنك تعمل copy في مربع السؤال ،       وفي المربع أدناه ، قم بنسخ الإجابة من النص ولصقها ، لا يمكنك الكتابة  في مربع الإجابة حسب التصميم.</h3></li>
+        <li><h3> يفضل أن تستعمل كلماتك الخاصة لطرح الأسئلةو عدم النقل من النص، الأسئلةالصعبة مفضلة </h3></li>
+        <li><h3>يفضل أن يكون السؤال يمكن الاجابة عليه بدون سياق النص   </h3></li>
+      </ul>
+
+      <h2> ملاحظات: </h2>
+      <ul>
+          <li><h3> النصوص مأخوذة من ويكيبيديا </h3></li>
+          <li><h3> يمكنم إستعمل YAMLI للكتابة </h3></li>
+          <li><h3>تحذير: بعض النصوص قد تتناول مواضيع إباحية، يمكنك الدخول إلى الصفحة مجدداً للحصول على نص جديد </h3></li>
+      </ul>
+      <hr>
+
+  </div>
+
+  <div>
+      <h3> PLEASE READ and OBLIGE: Write the in the first box the question with your keyboard, you cannot paste in the question box,
+      and in the box below it copy the answer from the PARAGRAPH and paste it, YOU CANNOT WRITE
+      IN THE ANSWER BOX by design. </h3>
+      <h3>
+          يرجى القراءة والالتزام: اكتب في المربع الأول السؤال باستخدام لوحة المفاتيح ، ولا يمكنك تعمل copy في مربع السؤال ،       وفي المربع أدناه ، قم بنسخ الإجابة من النص ولصقها ، لا يمكنك الكتابة  في مربع الإجابة حسب التصميم.
+      </h3>
+
+
+      <h3>مثال: </h3>
+      <p><font size="+3"> <b>
+          نص
+      </b></p>
+      <p> ${testp}</p>
+      <p><font size="+3"> <b>
+          سؤال
+      </b></p>
+      <p> ${exq}</p>
+      <p><font size="+3"> <b>
+          الجواب من النص
+      </b></p>
+      <p> ${exa}</p>
+      <p><font size="+3"> <b>
+          سؤال للإجابة (ضروري)
+      </b></p>
+      <p> ${testq}</p>
+      <p><font size="+3"> <b>
+          الجواب من النص
+      </b></p>
+      <crowd-input  onkeypress='return false' type="text" name="testa" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+
+
+    <h3>وقت العمل المقدر: 40-50 دقيقة إجمالي و-7-10 دقيقة لكل مقالة </h3>
+    <!-- #################################################################################
+    ################################################################################# -->
+    <h3> ${article1} :مقالة </h3>
+        <h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+      <p> ${paragraph11}</p>
+
+      <h4>السؤال الأول </h4>
+      <crowd-input type="text" name="question111"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+             onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+      <h4>الجواب</h4>
+      <crowd-input  onkeypress='return false' type="text" name="answer111" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+      <h4>السؤال الثاني</h4>
+      <crowd-input type="text" name="question112"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+             onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+    <h4>الجواب</h4>
+      <crowd-input onkeypress='return false'   type="text" name="answer112" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+      <h4>السؤال الثالث</h4>
+      <crowd-input type="text" name="question113"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+             onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+      <crowd-input onkeypress='return false'  type="text" name="answer113" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+      <p> ${paragraph12}</p>
+      <h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+      <h4>السؤال الأول </h4>
+      <crowd-input type="text" name="question121"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+             onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+      <crowd-input  onkeypress='return false' type="text" name="answer121" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+      <h4>السؤال الثاني</h4>
+      <crowd-input type="text" name="question122"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+             onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+      <crowd-input onkeypress='return false'   type="text" name="answer122" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+      <h4>السؤال الثالث</h4>
+      <crowd-input type="text" name="question123"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+             onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+      <crowd-input onkeypress='return false'  type="text" name="answer123" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+
+      <p> ${paragraph13}</p>
+      <h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+      <h4>السؤال الأول </h4>
+      <crowd-input type="text" name="question131"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+             onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+      <crowd-input  onkeypress='return false' type="text" name="answer131" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+      <h4>السؤال الثاني</h4>
+      <crowd-input type="text" name="question132"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+             onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+      <crowd-input onkeypress='return false'   type="text" name="answer132" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+      <h4>السؤال الثالث</h4>
+      <crowd-input type="text" name="question133"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+             onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+              <h4>الجواب</h4>
+
+      <crowd-input onkeypress='return false'  type="text" name="answer133" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+
+    <!-- #################################################################################
+    ################################################################################# -->
+    <h3> ${article2} :مقالة </h3>
+
+    <h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+
+  <p> ${paragraph21}</p>
+
+  <h4>السؤال الأول </h4>
+  <crowd-input type="text" name="question211"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+         onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+  <crowd-input  onkeypress='return false' type="text" name="answer211" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+  <h4>السؤال الثاني</h4>
+  <crowd-input type="text" name="question212"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+         onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+  <crowd-input onkeypress='return false'   type="text" name="answer212" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+  <h4>السؤال الثالث</h4>
+  <crowd-input type="text" name="question213"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+         onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+  <crowd-input onkeypress='return false'  type="text" name="answer213" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+  <p> ${paragraph22}</p>
+  <h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+  <h4>السؤال الأول </h4>
+  <crowd-input type="text" name="question221"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+         onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+  <crowd-input  onkeypress='return false' type="text" name="answer221" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+  <h4>السؤال الثاني</h4>
+  <crowd-input type="text" name="question222"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+         onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+  <crowd-input onkeypress='return false'   type="text" name="answer222" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+  <h4>السؤال الثالث</h4>
+  <crowd-input type="text" name="question223"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+         onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+  <crowd-input onkeypress='return false'  type="text" name="answer223" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+
+  <p> ${paragraph23}</p>
+  <h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+  <h4>السؤال الأول </h4>
+  <crowd-input type="text" name="question231"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+         onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+  <crowd-input  onkeypress='return false' type="text" name="answer231" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+  <h4>السؤال الثاني</h4>
+  <crowd-input type="text" name="question232"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+         onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+  <crowd-input onkeypress='return false'   type="text" name="answer232" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+  <h4>السؤال الثالث</h4>
+  <crowd-input type="text" name="question233"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+         onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+  <crowd-input onkeypress='return false'  type="text" name="answer233" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+  <!-- #################################################################################
+  ################################################################################# -->
+
+  <h3> ${article3} :مقالة </h3>
+
+
+  <h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+
+<p> ${paragraph31}</p>
+
+<h4>السؤال الأول </h4>
+<crowd-input type="text" name="question311"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+       onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input  onkeypress='return false' type="text" name="answer311" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثاني</h4>
+<crowd-input type="text" name="question312"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+       onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'   type="text" name="answer312" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثالث</h4>
+<crowd-input type="text" name="question313"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+       onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'  type="text" name="answer313" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<p> ${paragraph32}</p>
+<h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+<h4>السؤال الأول </h4>
+<crowd-input type="text" name="question321"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+       onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input  onkeypress='return false' type="text" name="answer321" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثاني</h4>
+<crowd-input type="text" name="question322"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+       onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'   type="text" name="answer322" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثالث</h4>
+<crowd-input type="text" name="question323"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+       onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'  type="text" name="answer323" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+
+<p> ${paragraph33}</p>
+<h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+<h4>السؤال الأول </h4>
+<crowd-input type="text" name="question331"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+       onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input  onkeypress='return false' type="text" name="answer331" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثاني</h4>
+<crowd-input type="text" name="question332"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+       onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'   type="text" name="answer332" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثالث</h4>
+<crowd-input type="text" name="question333"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+       onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'  type="text" name="answer333" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+
+<!-- #################################################################################
+################################################################################# -->
+
+<h3> ${article4} :مقالة </h3>
+
+<h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+
+<p> ${paragraph41}</p>
+
+<h4>السؤال الأول </h4>
+<crowd-input type="text" name="question411"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input  onkeypress='return false' type="text" name="answer411" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثاني</h4>
+<crowd-input type="text" name="question412"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'   type="text" name="answer412" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثالث</h4>
+<crowd-input type="text" name="question413"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'  type="text" name="answer413" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<p> ${paragraph42}</p>
+<h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+<h4>السؤال الأول </h4>
+<crowd-input type="text" name="question421"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input  onkeypress='return false' type="text" name="answer421" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثاني</h4>
+<crowd-input type="text" name="question422"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'   type="text" name="answer422" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثالث</h4>
+<crowd-input type="text" name="question423"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'  type="text" name="answer423" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+
+<p> ${paragraph43}</p>
+<h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+<h4>السؤال الأول </h4>
+<crowd-input type="text" name="question431"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input  onkeypress='return false' type="text" name="answer431" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثاني</h4>
+<crowd-input type="text" name="question432"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'   type="text" name="answer432" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثالث</h4>
+<crowd-input type="text" name="question433"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'  type="text" name="answer433" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+
+
+<!-- #################################################################################
+################################################################################# -->
+
+<h3> ${article5} :مقالة </h3>
+
+<h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+
+<p> ${paragraph51}</p>
+
+<h4>السؤال الأول </h4>
+<crowd-input type="text" name="question511"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input  onkeypress='return false' type="text" name="answer511" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثاني</h4>
+<crowd-input type="text" name="question512"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'   type="text" name="answer512" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثالث</h4>
+<crowd-input type="text" name="question513"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'  type="text" name="answer513" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<p> ${paragraph52}</p>
+<h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+<h4>السؤال الأول </h4>
+<crowd-input type="text" name="question521"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input  onkeypress='return false' type="text" name="answer521" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثاني</h4>
+<crowd-input type="text" name="question522"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'   type="text" name="answer522" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثالث</h4>
+<crowd-input type="text" name="question523"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'  type="text" name="answer523" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+
+<p> ${paragraph53}</p>
+<h3>حاول طرح 3 اسئلة على النص التالي وإنسخ (copy-paste) الجواب: أصغر مقطع من النص يجاوب على السؤال </h3>
+
+<h4>السؤال الأول </h4>
+<crowd-input type="text" name="question531"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input  onkeypress='return false' type="text" name="answer531" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثاني</h4>
+<crowd-input type="text" name="question532"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'   type="text" name="answer532" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<h4>السؤال الثالث</h4>
+<crowd-input type="text" name="question533"  onselectstart="return false" onpaste="return false;" onCopy="return false"
+     onCut="return false"  placeholder="إطرح سؤالك هنا مستخدماً كلماتك الخاصة." required></crowd-input>
+        <h4>الجواب</h4>
+
+<crowd-input onkeypress='return false'  type="text" name="answer533" placeholder="إنسخ الجواب حرفياً من النص."  required></crowd-input>
+
+<hr>
+
+  </div>
+
+<p> Your questions and answers will be automatically checked if the answer is contained in the paragraph and if the question is properly phrased in MSA. You can expect to be payed in a week if your task was reasonable well done.</p>
+</crowd-form>
