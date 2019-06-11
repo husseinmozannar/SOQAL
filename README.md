@@ -1,5 +1,11 @@
 # SOQAL: Neural Arabic Question Answering
+(Under construction)
 This repository includes the code and dataset described in our WANLP 2019 paper Neural Arabic Question Answering by Hussein Mozananr, Karl El Hajal, Elie Maamary and Hazem Hajj.
+
+**Coming soon:**
+*  Trained models and retriever
+*  Jupyter notebook tutorial for training a simple neural reading comprehension model on the Arabic Reading Comprehension Dataset (ARCD)
+*  Google Colab for training BERT on Arabic-SQuAD and ARCD
 
 Quick Links:
 *  [Datasets](data/README.md)
