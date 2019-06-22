@@ -1,19 +1,7 @@
 
-## Installing Tensorflow
-
-If your computer has a GPU:
-```shell
-pip install tensorflow-gpu
-```
-Otherwise to use just a CPU:
-```shell
-pip install tensorflow
-```
-
-
 ## Training and Evaluating BERT on Arabic-SQuAD or ARCD
 
-We have provided a Google Colab notebook to train, evaluate and demo BERT on our datasets availabe here: PUT LINK
+We have provided a Google Colab notebook to train, evaluate and demo BERT on our datasets availabe here: [Colab](https://colab.research.google.com/drive/19a_jIKpjhQez0KTa_Qwh2BW2nryGXzhb)
 
 
 To train locally, the training and code follows exactly that of the [Official BERT repo](https://github.com/google-research/bert).

@@ -1,6 +1,6 @@
 # SOQAL: Neural Arabic Question Answering
 (Under construction)
-This repository includes the code and dataset described in our WANLP 2019 paper Neural Arabic Question Answering by Hussein Mozananr, Karl El Hajal, Elie Maamary and Hazem Hajj.
+This repository includes the code and dataset described in our [WANLP 2019 paper Neural Arabic Question Answering](https://arxiv.org/abs/1906.05394) by Hussein Mozannar, Karl El Hajal, Elie Maamary and Hazem Hajj.
 
 **Coming soon:**
 *  Trained models and retriever
@@ -13,6 +13,7 @@ Quick Links:
 *  [Document Retrievers](retriever/README.md)
 *  [Getting Arabic Wikipedia](arwiki/README.md)
 *  [Tools for Creating our datasets](dataset_creation/README.md)
+*  [Document Reading baselines](baselines_reading/README.md)
 ## Arabic Open Domain Question Answering
 ![](system_fig.jpg)
 This work builds a system for open domain
@@ -43,10 +44,10 @@ transformer BERT and finally (3) a linear answer ranking module to obtain .
 Credit: This work draws inspiration from [DrQA](https://github.com/facebookresearch/DrQA). 
 
 ## Platform
-Tested for Python 3.6 on Windows 8 and 10.
+Tested for Python 3.6 on Windows 8,10 and Linux. Most commands are written assuming Windows.
 
 ## Installing SOQAL
-Create a new virtual environment (you need to install virtualenv if you want) and activate it:
+(for Windows) Create a new virtual environment (you need to install virtualenv if you want) and activate it:
 ```shell
 virtualenv venv
 venv\Scripts\activate
@@ -86,9 +87,10 @@ localhost:9999
 Please cite our paper if you use our datasets or code:
 
 ```
-@inproceedings{mozannar2019soqal,
+@article{mozannar2019neural,
   title={Neural Arabic Question Answering},
-  author={Mozannar, Hussein and El Hajal, Karl and Maamary, Elie and Hajj, Hazem},
-  booktitle={Association for Computational Linguistics (ACL)},
+  author={Mozannar, Hussein and Hajal, Karl El and Maamary, Elie and Hajj, Hazem},
+  journal={arXiv preprint arXiv:1906.05394},
   year={2019}
 }
+```
