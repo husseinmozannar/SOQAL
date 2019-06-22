@@ -1,2 +1,4 @@
 *.p
 *.pyc
+*.xml
+.idea
