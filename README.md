@@ -2,7 +2,7 @@
 This repository includes the code and dataset described in our [WANLP 2019 paper Neural Arabic Question Answering](https://arxiv.org/abs/1906.05394) by Hussein Mozannar, Karl El Hajal, Elie Maamary and Hazem Hajj.
 
 
-*  Trained models and retriever
+*  See below how to run a demo of our open domain question answering system in Arabic
 
 *  Google Colab for training BERT on Arabic-SQuAD and ARCD: [Colab](https://colab.research.google.com/drive/19a_jIKpjhQez0KTa_Qwh2BW2nryGXzhb)
 
@@ -63,7 +63,11 @@ pip install -r requirements.txt
 
 
 ## Demo
-This relies on training your own BERT model and retriver.
+After installing the required packages, we have to download trained retriever and reader.
+
+First BERT model: [uncased multilingual](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip), trained reader [trained BERT](https://storage.googleapis.com/soqal_traind_models/mod.zip) and checkpoint file [checkpoint] (https://storage.googleapis.com/soqal_traind_models/checkpoint): export the mod.zip and place the checkpoint file inside the mod folder, retriever [retriever](https://storage.googleapis.com/soqal_traind_models/tfidfretriever.p).
+
+Export BERT model and place in bert/, export trained reader and place it in bert/ and place tfretriever.p in retriever/
 
 To interactively ask Arabic open-domain questions to SOQAL, follow the instructions bellow: 
 
@@ -71,7 +75,7 @@ To interactively ask Arabic open-domain questions to SOQAL, follow the instructi
 python demo_open.py ^
 -c bert/multilingual_L-12_H-768_A-12/bert_config.json ^
 -v bert/multilingual_L-12_H-768_A-12/vocab.txt ^
--o bert/runs/ ^
+-o bert/mod/ ^
 -r retriever/tfidfretriever.p
 ```
 
