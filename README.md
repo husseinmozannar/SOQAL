@@ -1,11 +1,10 @@
 # SOQAL: Neural Arabic Question Answering
-(Under construction)
 This repository includes the code and dataset described in our [WANLP 2019 paper Neural Arabic Question Answering](https://arxiv.org/abs/1906.05394) by Hussein Mozannar, Karl El Hajal, Elie Maamary and Hazem Hajj.
 
-**Coming soon:**
+
 *  Trained models and retriever
-*  Jupyter notebook tutorial for training a simple neural reading comprehension model on the Arabic Reading Comprehension Dataset (ARCD)
-*  Google Colab for training BERT on Arabic-SQuAD and ARCD
+
+*  Google Colab for training BERT on Arabic-SQuAD and ARCD: [Colab](https://colab.research.google.com/drive/19a_jIKpjhQez0KTa_Qwh2BW2nryGXzhb)
 
 Quick Links:
 *  [Datasets](data/README.md)
@@ -64,7 +63,7 @@ pip install -r requirements.txt
 
 
 ## Demo
-(We will soon provide trained models, this relies on you training BERT and building the retriever)
+This relies on training your own BERT model and retriver.
 
 To interactively ask Arabic open-domain questions to SOQAL, follow the instructions bellow: 
 
@@ -82,15 +81,23 @@ localhost:9999
 ```
 ## Citation
 
-(pending ACL release)
-
 Please cite our paper if you use our datasets or code:
 
 ```
-@article{mozannar2019neural,
-  title={Neural Arabic Question Answering},
-  author={Mozannar, Hussein and Hajal, Karl El and Maamary, Elie and Hajj, Hazem},
-  journal={arXiv preprint arXiv:1906.05394},
-  year={2019}
+@inproceedings{mozannar-etal-2019-neural,
+    title = "Neural {A}rabic Question Answering",
+    author = "Mozannar, Hussein  and
+      Maamary, Elie  and
+      El Hajal, Karl  and
+      Hajj, Hazem",
+    booktitle = "Proceedings of the Fourth Arabic Natural Language Processing Workshop",
+    month = aug,
+    year = "2019",
+    address = "Florence, Italy",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/W19-4612",
+    doi = "10.18653/v1/W19-4612",
+    pages = "108--118",
+    abstract = "This paper tackles the problem of open domain factual Arabic question answering (QA) using Wikipedia as our knowledge source. This constrains the answer of any question to be a span of text in Wikipedia. Open domain QA for Arabic entails three challenges: annotated QA datasets in Arabic, large scale efficient information retrieval and machine reading comprehension. To deal with the lack of Arabic QA datasets we present the Arabic Reading Comprehension Dataset (ARCD) composed of 1,395 questions posed by crowdworkers on Wikipedia articles, and a machine translation of the Stanford Question Answering Dataset (Arabic-SQuAD). Our system for open domain question answering in Arabic (SOQAL) is based on two components: (1) a document retriever using a hierarchical TF-IDF approach and (2) a neural reading comprehension model using the pre-trained bi-directional transformer BERT. Our experiments on ARCD indicate the effectiveness of our approach with our BERT-based reader achieving a 61.3 F1 score, and our open domain system SOQAL achieving a 27.6 F1 score.",
 }
 ```
