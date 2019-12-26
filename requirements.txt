@@ -3,4 +3,4 @@ scipy
 sklearn
 nltk
 gensim
-tensorflow # tensorflow-gpu
+tensorflow==1.11 # tensorflow-gpu
