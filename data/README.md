@@ -18,5 +18,3 @@ file.json
 │       └── "title": "document id"
 └── "version": 1.1
 ```
-
-## Arabic Translated Stanford Question Answering Dataset (Arabic-SQuAD)
