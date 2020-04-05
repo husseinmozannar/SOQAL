@@ -44,6 +44,9 @@ def normalize_answer(s):
 
     def remove_articles(text):
         return re.sub(r'\b(a|an|the)\b', ' ', text)
+    
+    def remove_articles_ar(text):
+        return re.sub('\sال^|ال', ' ', text)
 
     def white_space_fix(text):
         return ' '.join(text.split())
@@ -55,7 +58,7 @@ def normalize_answer(s):
     def lower(text):
         return text.lower()
 
-    return white_space_fix(remove_articles(remove_punc(lower(s))))
+    return white_space_fix(remove_articles_ar(remove_articles(remove_punc(lower(s)))))
 
 
 def f1_score(prediction, ground_truth):
