@@ -12,10 +12,10 @@ import argparse
 
 def normalize_answer(s):
     """Lower text and remove punctuation, articles and extra whitespace."""
-
     def remove_articles(text):
-        return re.sub(r'\b(a|an|the)\b', ' ', text)
-
+        fix_text = re.sub(r'\b(a|an|the)\b', ' ', text)
+        fix_text = re.sub('\sال^|ال', ' ', fix_text)
+        return fix_text
     def white_space_fix(text):
         return ' '.join(text.split())
 
