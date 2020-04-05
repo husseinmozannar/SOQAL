@@ -8,6 +8,37 @@ import json
 import sys
 import nltk
 from random import randint
+
+def arabic_clean_str(text):
+    '''
+    this method normalizes up an arabic string, currently not used in evaluation, but should be used in the future
+    '''
+    search = ["أ", "إ", "آ", "ة", "_", "-", "/", ".", "،", " و ", " يا ", '"', "ـ", "'", "ى", "\\", '\n', '\t',
+              '&quot;', '?', '؟', '!']
+    replace = ["ا", "ا", "ا", "ه", " ", " ", "", "", "", " و", " يا", "", "", "", "ي", "", ' ', ' ', ' ', ' ? ', ' ؟ ',
+               ' ! ']
+
+    # remove tashkeel
+    p_tashkeel = re.compile(r'[\u0617-\u061A\u064B-\u0652]')
+    text = re.sub(p_tashkeel, "", text)
+
+    # remove longation
+    p_longation = re.compile(r'(.)\1+')
+    subst = r"\1\1"
+    text = re.sub(p_longation, subst, text)
+
+    text = text.replace('وو', 'و')
+    text = text.replace('يي', 'ي')
+    text = text.replace('اا', 'ا')
+
+    for i in range(0, len(search)):
+        text = text.replace(search[i], replace[i])
+
+    # trim
+    text = text.strip()
+    return text
+
+
 def normalize_answer(s):
     """Lower text and remove punctuation, articles and extra whitespace."""
 
