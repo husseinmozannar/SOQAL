@@ -65,7 +65,7 @@ pip install -r requirements.txt
 ## Demo
 After installing the required packages, we have to download trained retriever and reader.
 
-First BERT model: [uncased multilingual](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip), trained reader [trained BERT](https://storage.googleapis.com/soqal_traind_models/mod.zip) and checkpoint file [checkpoint](https://storage.googleapis.com/soqal_traind_models/checkpoint): export the mod.zip and place the checkpoint file inside the mod folder, retriever [retriever](https://storage.googleapis.com/soqal_traind_models/tfidfretriever.p).
+First BERT model: [cased multilingual](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip), trained reader [trained BERT](https://storage.googleapis.com/soqal_traind_models/mod.zip) and checkpoint file [checkpoint](https://storage.googleapis.com/soqal_traind_models/checkpoint): export the mod.zip and place the checkpoint file inside the mod folder, retriever [retriever](https://storage.googleapis.com/soqal_traind_models/tfidfretriever.p).
 
 Export BERT model and place in bert/, export trained reader and place it in bert/ and place tfretriever.p in retriever/
 
