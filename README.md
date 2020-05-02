@@ -73,8 +73,8 @@ To interactively ask Arabic open-domain questions to SOQAL, follow the instructi
 
 ```shell
 python demo_open.py ^
--c bert/multilingual_L-12_H-768_A-12/bert_config.json ^
--v bert/multilingual_L-12_H-768_A-12/vocab.txt ^
+-c bert/multi_cased_L-12_H-768_A-12/bert_config.json ^
+-v bert/multi_cased_L-12_H-768_A-12/vocab.txt ^
 -o bert/mod/ ^
 -r retriever/tfidfretriever.p
 ```
