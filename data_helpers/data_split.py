@@ -5,11 +5,14 @@ import os
 
 
 def combine_json_files(fnames):
-    # fnames is an array of filenames
+    '''
+    Assumes json files are in SQuAD format, i.e see https://github.com/facebookresearch/DrQA#format-b
+    fnames is an array of filenames
+    ''' 
     combined_data = []
     for fname in fnames:
         with open(fname) as f:
-            data = json.load(f)#['data']
+            data = json.load(f)['data']
         for article in data:
             combined_data.append(article)
 
