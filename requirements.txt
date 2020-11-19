@@ -4,3 +4,4 @@ sklearn
 nltk
 gensim
 tensorflow==1.11 # tensorflow-gpu
+bottle
