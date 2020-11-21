@@ -379,29 +379,29 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 end_position = 0
 
             if example_index < 20:
-                tf.logging.info("*** Example ***")
-                tf.logging.info("unique_id: %s" % (unique_id))
-                tf.logging.info("example_index: %s" % (example_index))
-                tf.logging.info("doc_span_index: %s" % (doc_span_index))
-                tf.logging.info("tokens: %s" % " ".join(
+                tf.compat.v1.logging.info("*** Example ***")
+                tf.compat.v1.logging.info("unique_id: %s" % (unique_id))
+                tf.compat.v1.logging.info("example_index: %s" % (example_index))
+                tf.compat.v1.logging.info("doc_span_index: %s" % (doc_span_index))
+                tf.compat.v1.logging.info("tokens: %s" % " ".join(
                     [tokenization.printable_text(x) for x in tokens]))
-                tf.logging.info("token_to_orig_map: %s" % " ".join(
+                tf.compat.v1.logging.info("token_to_orig_map: %s" % " ".join(
                     ["%d:%d" % (x, y) for (x, y) in six.iteritems(token_to_orig_map)]))
-                tf.logging.info("token_is_max_context: %s" % " ".join([
+                tf.compat.v1.logging.info("token_is_max_context: %s" % " ".join([
                     "%d:%s" % (x, y) for (x, y) in six.iteritems(token_is_max_context)
                 ]))
-                tf.logging.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
-                tf.logging.info(
+                tf.compat.v1.logging.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
+                tf.compat.v1.logging.info(
                     "input_mask: %s" % " ".join([str(x) for x in input_mask]))
-                tf.logging.info(
+                tf.compat.v1.logging.info(
                     "segment_ids: %s" % " ".join([str(x) for x in segment_ids]))
                 if is_training and example.is_impossible:
-                    tf.logging.info("impossible example")
+                    tf.compat.v1.logging.info("impossible example")
                 if is_training and not example.is_impossible:
                     answer_text = " ".join(tokens[start_position:(end_position + 1)])
-                    tf.logging.info("start_position: %d" % (start_position))
-                    tf.logging.info("end_position: %d" % (end_position))
-                    tf.logging.info(
+                    tf.compat.v1.logging.info("start_position: %d" % (start_position))
+                    tf.compat.v1.logging.info("end_position: %d" % (end_position))
+                    tf.compat.v1.logging.info(
                         "answer: %s" % (tokenization.printable_text(answer_text)))
 
             feature = InputFeatures(
@@ -494,11 +494,11 @@ def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
     seq_length = final_hidden_shape[1]
     hidden_size = final_hidden_shape[2]
 
-    output_weights = tf.get_variable(
+    output_weights = tf.compat.v1.get_variable(
         "cls/squad/output_weights", [2, hidden_size],
         initializer=tf.truncated_normal_initializer(stddev=0.02))
 
-    output_bias = tf.get_variable(
+    output_bias = tf.compat.v1.get_variable(
         "cls/squad/output_bias", [2], initializer=tf.zeros_initializer())
 
     final_hidden_matrix = tf.reshape(final_hidden,
@@ -524,9 +524,9 @@ def model_fn_builder(bert_config, init_checkpoint, learning_rate,
     def model_fn(features, labels, mode, params):  # pylint: disable=unused-argument
         """The `model_fn` for TPUEstimator."""
 
-        tf.logging.info("*** Features ***")
+        tf.compat.v1.logging.info("*** Features ***")
         for name in sorted(features.keys()):
-            tf.logging.info("  name = %s, shape = %s" % (name, features[name].shape))
+            tf.compat.v1.logging.info("  name = %s, shape = %s" % (name, features[name].shape))
 
         unique_ids = features["unique_ids"]
         input_ids = features["input_ids"]
@@ -543,7 +543,7 @@ def model_fn_builder(bert_config, init_checkpoint, learning_rate,
             segment_ids=segment_ids,
             use_one_hot_embeddings=use_one_hot_embeddings)
 
-        tvars = tf.trainable_variables()
+        tvars = tf.compat.v1.trainable_variables()
 
         initialized_variable_names = {}
         scaffold_fn = None
@@ -553,19 +553,19 @@ def model_fn_builder(bert_config, init_checkpoint, learning_rate,
             if use_tpu:
 
                 def tpu_scaffold():
-                    tf.train.init_from_checkpoint(init_checkpoint, assignment_map)
+                    tf.compat.v1.train.init_from_checkpoint(init_checkpoint, assignment_map)
                     return tf.train.Scaffold()
 
                 scaffold_fn = tpu_scaffold
             else:
-                tf.train.init_from_checkpoint(init_checkpoint, assignment_map)
+                tf.compat.v1.train.init_from_checkpoint(init_checkpoint, assignment_map)
 
-        tf.logging.info("**** Trainable Variables ****")
+        tf.compat.v1.logging.info("**** Trainable Variables ****")
         for var in tvars:
             init_string = ""
             if var.name in initialized_variable_names:
                 init_string = ", *INIT_FROM_CKPT*"
-            tf.logging.info("  name = %s, shape = %s%s", var.name, var.shape,
+            tf.compat.v1.logging.info("  name = %s, shape = %s%s", var.name, var.shape,
                             init_string)
 
         output_spec = None
@@ -617,10 +617,10 @@ def input_fn_builder(input_file, seq_length, is_training, drop_remainder):
     """Creates an `input_fn` closure to be passed to TPUEstimator."""
 
     name_to_features = {
-        "unique_ids": tf.FixedLenFeature([], tf.int64),
-        "input_ids": tf.FixedLenFeature([seq_length], tf.int64),
-        "input_mask": tf.FixedLenFeature([seq_length], tf.int64),
-        "segment_ids": tf.FixedLenFeature([seq_length], tf.int64),
+        "unique_ids": tf.io.FixedLenFeature([], tf.int64),
+        "input_ids": tf.io.FixedLenFeature([seq_length], tf.int64),
+        "input_mask": tf.io.FixedLenFeature([seq_length], tf.int64),
+        "segment_ids": tf.io.FixedLenFeature([seq_length], tf.int64),
     }
 
     if is_training:
@@ -629,14 +629,14 @@ def input_fn_builder(input_file, seq_length, is_training, drop_remainder):
 
     def _decode_record(record, name_to_features):
         """Decodes a record to a TensorFlow example."""
-        example = tf.parse_single_example(record, name_to_features)
+        example = tf.io.parse_single_example(record, name_to_features)
 
         # tf.Example only supports tf.int64, but the TPU only supports tf.int32.
         # So cast all int64 to int32.
         for name in list(example.keys()):
             t = example[name]
             if t.dtype == tf.int64:
-                t = tf.to_int32(t)
+                t = tf.cast(t, tf.int32)
             example[name] = t
 
         return example
@@ -647,13 +647,10 @@ def input_fn_builder(input_file, seq_length, is_training, drop_remainder):
 
         # For training, we want a lot of parallel reading and shuffling.
         # For eval, we want no shuffling and parallel reading doesn't matter.
-        d = tf.data.TFRecordDataset(input_file)
-
-        d = d.apply(
-            tf.contrib.data.map_and_batch(
-                lambda record: _decode_record(record, name_to_features),
-                batch_size=batch_size,
-                drop_remainder=drop_remainder))
+        d = tf.data.TFRecordDataset(input_file)\
+            .map(lambda record: _decode_record(record, name_to_features))\
+            .batch(batch_size=batch_size,
+                drop_remainder=drop_remainder)
 
         return d
 
@@ -865,7 +862,7 @@ def get_final_text(pred_text, orig_text, do_lower_case):
     start_position = tok_text.find(pred_text)
     if start_position == -1:
         if verbose_logging:
-            tf.logging.info(
+            tf.compat.v1.logging.info(
                 "Unable to find text: '%s' in '%s'" % (pred_text, orig_text))
         return orig_text
     end_position = start_position + len(pred_text) - 1
@@ -875,7 +872,7 @@ def get_final_text(pred_text, orig_text, do_lower_case):
 
     if len(orig_ns_text) != len(tok_ns_text):
         if verbose_logging:
-            tf.logging.info("Length not equal after stripping spaces: '%s' vs '%s'",
+            tf.compat.v1.logging.info("Length not equal after stripping spaces: '%s' vs '%s'",
                             orig_ns_text, tok_ns_text)
         return orig_text
 
@@ -893,7 +890,7 @@ def get_final_text(pred_text, orig_text, do_lower_case):
 
     if orig_start_position is None:
         if verbose_logging:
-            tf.logging.info("Couldn't map start position")
+            tf.compat.v1.logging.info("Couldn't map start position")
         return orig_text
 
     orig_end_position = None
@@ -904,7 +901,7 @@ def get_final_text(pred_text, orig_text, do_lower_case):
 
     if orig_end_position is None:
         if verbose_logging:
-            tf.logging.info("Couldn't map end position")
+            tf.compat.v1.logging.info("Couldn't map end position")
         return orig_text
 
     output_text = orig_text[orig_start_position:(orig_end_position + 1)]
@@ -953,7 +950,7 @@ class FeatureWriter(object):
         self.filename = filename
         self.is_training = is_training
         self.num_features = 0
-        self._writer = tf.python_io.TFRecordWriter(filename)
+        self._writer = tf.io.TFRecordWriter(filename)
 
     def process_feature(self, feature):
         """Write a InputFeature to the TFRecordWriter as a tf.train.Example."""
@@ -991,9 +988,9 @@ class BERT_model:
         self.vocab_file = vocab
         self.output_dir = output
         self.init_checkpoint = output
-        tf.logging.set_verbosity(0)
+        tf.compat.v1.logging.set_verbosity(0)
         self.bert_config = modeling.BertConfig.from_json_file(self.bert_config_file)
-        tf.gfile.MakeDirs(self.output_dir)
+        tf.io.gfile.makedirs(self.output_dir)
         self.tokenizer = tokenization.FullTokenizer(
             vocab_file=self.vocab_file, do_lower_case=do_lower_case)
         is_per_host = tf.contrib.tpu.InputPipelineConfig.PER_HOST_V2
@@ -1076,10 +1073,10 @@ class BERT_model:
             output_fn=append_feature)
         eval_writer.close()
 
-        tf.logging.info("***** Running predictions *****")
-        tf.logging.info("  Num orig examples = %d", len(eval_examples))
-        tf.logging.info("  Num split examples = %d", len(eval_features))
-        tf.logging.info("  Batch size = %d", predict_batch_size)
+        tf.compat.v1.logging.info("***** Running predictions *****")
+        tf.compat.v1.logging.info("  Num orig examples = %d", len(eval_examples))
+        tf.compat.v1.logging.info("  Num split examples = %d", len(eval_features))
+        tf.compat.v1.logging.info("  Batch size = %d", predict_batch_size)
 
         all_results = []
 
@@ -1129,7 +1126,7 @@ class BERT_model:
             output_fn=append_feature)
         eval_writer.close()
 
-        tf.logging.info("***** Running predictions on single example *****")
+        tf.compat.v1.logging.info("***** Running predictions on single example *****")
 
         all_results = []
 

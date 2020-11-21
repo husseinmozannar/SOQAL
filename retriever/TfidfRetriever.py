@@ -27,7 +27,11 @@ class TfidfRetriever:
         self.tokenizer = WordPunctTokenizer()
         self.stemmer = ARLSTem()
         self.docs = docs
-        self.stopwords = stopwords.words('arabic')
+        try:
+            self.stopwords = stopwords.words('arabic')
+        except LookupError:
+            nltk.download('stopwords')
+            self.stopwords = stopwords.words('arabic')
         self.vectorizer = TfidfVectorizer(ngram_range=(1, ngrams), norm=None, stop_words=self.stopwords)
         if tfidf_matrix is None or vectorizer is None:
             docs_stemmed = self.docs_stem()

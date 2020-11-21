@@ -5,14 +5,12 @@ import tensorflow as tf
 import bottle
 from bottle import route, run, static_file
 import threading
-import json
 import numpy as np
 import os
 from soqal import SOQAL
 from time import sleep
 import sys
 import pickle
-import json
 sys.path.append(os.path.abspath("retriever"))
 from retriever.GoogleSearchRetriever import ApiGoogleSearchRetriever
 from retriever.TfidfRetriever import HierarchicalTfidf

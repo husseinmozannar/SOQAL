@@ -2,10 +2,8 @@
 # This is Python 3.6
 from __future__ import division
 import json
-import random
-import pickle
+
 from find_answer import find_answer
-import unicodedata as ud
 from processing import transliterate_to_arabic
 from multiprocessing.dummy import Pool as ThreadPool
 import argparse

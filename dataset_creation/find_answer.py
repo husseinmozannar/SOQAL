@@ -1,8 +1,3 @@
-import sys
-import os
-from scipy import spatial
-import numpy as np
-
 def editDistance(str1, str2, m, n):
     # edit distance recursive implementation, m = len(str1) and n = len(str2)
     dp = [[0 for x in range(n + 1)] for x in range(m + 1)]
