@@ -3,5 +3,5 @@ scipy
 sklearn
 nltk
 gensim
-tensorflow==1.11 # tensorflow-gpu
+tensorflow==2.5.0 # tensorflow-gpu
 bottle
