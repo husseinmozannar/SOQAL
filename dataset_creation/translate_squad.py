@@ -7,7 +7,6 @@ sys.setdefaultencoding('utf-8')
 import json
 import random
 from google.cloud import translate
-import unicodedata as ud
 import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('-c','--cred', help='Google Translate Credentials', required=True)

@@ -2,10 +2,7 @@
 # This is Python 3.6
 import json
 import re
-import copy
 from polyglot.text import Text  # read README for how to install
-import random
-import unicodedata as ud
 ARABIC_LETTERS = 'ابتةثجحخدذرزسشصضطظعغفقكلمنهويءآأؤإئ'
 
 
