@@ -1,7 +1,4 @@
 import numpy as np
-import sys
-import pickle
-import json
 
 def softmax(x):
     """Compute softmax values for each sets of scores in x."""
